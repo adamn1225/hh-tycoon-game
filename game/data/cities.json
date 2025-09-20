@@ -1,0 +1,8 @@
+{
+  "cities": [
+    {"name": "Tampa", "x": 100, "y": 420},
+    {"name": "Atlanta", "x": 240, "y": 280},
+    {"name": "Dallas", "x": 120, "y": 360},
+    {"name": "Phoenix", "x": 60,  "y": 380}
+  ]
+}

@@ -1,0 +1,114 @@
+# Heavy Haul Tycoon Game Configuration
+# Based on the game balance parameters from the design document
+
+# Economic Constants
+economy:
+  base_rate_per_mile: 6.00  # Foundation payment calculation
+  distance_scale: 10  # Grid-based distance: (|dx| + |dy|) / scale
+  
+  # Weight/Cargo Multipliers
+  weight_multipliers:
+    standard: 1.1
+    oversize: 1.25
+    superload: 1.5
+  
+  # Oversize Bonus Percentages
+  oversize_bonuses:
+    standard: 0.0    # 0%
+    oversize: 0.20   # 20%
+    superload: 0.40  # 40%
+  
+  # Deadline Pressure Multipliers
+  deadline_multipliers:
+    urgent: 1.3      # < 4 hours
+    standard: 1.15   # 4-6 hours  
+    relaxed: 1.0     # > 6 hours
+  
+  # Performance Bonuses/Penalties
+  early_delivery_bonus: 0.20    # +20% for early delivery
+  late_delivery_penalty_min: 0.10  # -10% minimum penalty
+  late_delivery_penalty_max: 0.50  # -50% maximum penalty
+
+# Penalties and Fines
+penalties:
+  collision_damage: 250      # Per incident
+  bridge_strike: 5000        # Mission failure + fine
+  off_road_fine: 100         # For extended off-road driving
+  towing_fee: 750           # Emergency fuel service
+
+# Vehicle Systems
+vehicle:
+  # Fuel System
+  fuel_capacity_base: 100     # Starting fuel capacity
+  fuel_consumption_base: 0.05 # Base drain rate per frame (60 FPS)
+  fuel_price_per_gallon: 4.50 # Market price simulation
+  
+  # Physics
+  max_speed: 4.0
+  acceleration: 0.15
+  deceleration: 0.1
+  turn_speed: 2.5
+  off_road_speed_penalty: 0.5  # Speed multiplier when off-road
+  off_road_fuel_penalty: 1.5   # Fuel consumption multiplier off-road
+
+# Upgrade System
+upgrades:
+  # Engine Upgrades
+  engine:
+    levels: [1, 2, 3]
+    costs: [5000, 12000, 25000]
+    speed_bonuses: [1.0, 1.3, 1.6]  # Speed multipliers
+    
+  # Fuel Tank Upgrades  
+  fuel_tank:
+    levels: [1, 2, 3]
+    costs: [3000, 8000, 15000]
+    capacities: [100, 200, 300]  # Fuel capacity in gallons
+    
+  # Frame/Durability Upgrades
+  frame:
+    levels: [1, 2, 3] 
+    costs: [4000, 10000, 20000]
+    collision_reduction: [1.0, 0.75, 0.5]  # Damage multipliers
+
+# Mission Generation
+missions:
+  # Contract Distribution (probabilities)
+  cargo_type_weights:
+    standard: 0.5    # 50% of contracts
+    oversize: 0.3    # 30% of contracts  
+    superload: 0.2   # 20% of contracts
+  
+  # Deadline Generation
+  deadline_base_calculation: "distance_miles / 20"  # Base hours needed
+  deadline_variance_hours: [0, 4]  # Random addition range
+  deadline_min_hours: 3
+  deadline_max_hours: 12
+
+# Player Starting Resources
+starting_resources:
+  cash: 10000
+  fuel: 100.0
+  truck_level: 1
+
+# UI Configuration  
+ui:
+  screen_width: 800
+  screen_height: 600
+  fps_target: 60
+  
+  # HUD Element Positions
+  fuel_gauge_pos: [20, 20]
+  speedometer_pos: [20, 55] 
+  cash_display_pos: [20, 85]
+  timer_pos: [20, 115]
+  
+  # Colors (RGB values)
+  colors:
+    background: [40, 60, 40]    # Dark green
+    road: [80, 80, 80]          # Dark gray
+    fuel_good: [0, 200, 0]      # Green
+    fuel_warning: [255, 255, 0] # Yellow  
+    fuel_critical: [200, 0, 0]  # Red
+    cash: [0, 255, 0]           # Green
+    warning: [255, 165, 0]      # Orange

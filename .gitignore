@@ -1,0 +1,41 @@
+# === Virtual Environment (venv) ===
+# This ignores the virtual environment folder, which is local to your machine.
+# By default, venv names the folder `venv` or `.venv`.
+venv/
+.venv/
+
+# == Python ==
+# Bytecode files
+__pycache__/
+*.pyc
+
+# IDE-specific files
+# These folders and files store local configurations and should not be version controlled.
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+.project
+.settings/
+
+# OS-specific files
+# Exclude operating system files that can be generated automatically.
+.DS_Store
+Thumbs.db
+
+# === Buildozer ===
+# Buildozer creates several directories to store build-related data,
+# including the downloaded tools, compiled files, and final packages.
+# You should commit the `buildozer.spec` file, but not the generated folders.
+.buildozer/
+bin/
+# The `.buildozer` folder contains all the build logic and artifacts.
+# The `bin` folder contains the final Android (.apk) or iOS (.ipa) package.
+
+# === Kivy ===
+# Kivy can generate logs that are not needed in version control.
+*.log
+
+# === Pygame ===
+# Pygame itself does not generate specific files that need to be ignored,
+# but the standard Python ignores cover most temporary files you would want to exclude.
